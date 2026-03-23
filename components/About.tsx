@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
+import founderImg from './Images/Founder.png';
 
 const About: React.FC = () => {
   const stats = [
@@ -68,7 +68,7 @@ const About: React.FC = () => {
              {/* Founder Headshot */}
             <div className="absolute inset-0 bg-gray-200 rounded-full border-4 border-white shadow-xl overflow-hidden flex items-center justify-center">
               <img 
-                src="components\Images\Founder.png" 
+                src={founderImg} 
                 alt="Gnaneshwar Sulegai" 
                 className="w-full h-full object-cover" 
               />

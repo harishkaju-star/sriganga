@@ -14,8 +14,26 @@ import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import Loader from './components/Loader';
+
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState('home');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Hide loader after a delay or when all images/assets have loaded
+    const handleLoad = () => {
+      // Small timeout for smoother transition
+      setTimeout(() => setIsLoading(false), 2000);
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+      return () => window.removeEventListener('load', handleLoad);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +57,9 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#f8f9fa] selection:bg-red-200">
+      <AnimatePresence>
+        {isLoading && <Loader key="loader" />}
+      </AnimatePresence>
       <Navbar activeTab={activeTab} />
       
       <main>

@@ -110,9 +110,11 @@ const Hero: React.FC = () => {
               loop 
               muted 
               playsInline
+              preload="auto"
+              poster="/img/factory.png"
               className="w-full h-full object-cover"
             >
-              <source src="Vid/Metro.mp4" type="video/mp4" />
+              <source src="/Vid/Metro.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             
